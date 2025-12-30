@@ -1,0 +1,150 @@
+:root {
+  --light-pearl: #fdfcfb;
+  --soft-sky: #e2d1c3;
+  --heritage-gold: #b38728;
+  --gold-gradient: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+  --text-dark: #2d3436;
+  /* New Unique Iridescent Colors */
+  --iri-1: #f5f7fa;
+  --iri-2: #c3cfe2;
+  --iri-3: #e0f2f1;
+  --iri-4: #fce4ec;
+}
+
+body {
+  margin: 0;
+  /* UNIQUE: Animated Liquid Gradient Background */
+  background: linear-gradient(-45deg, var(--iri-1), var(--iri-2), var(--iri-3), var(--iri-4));
+  background-size: 400% 400%;
+  animation: liquidBg 15s ease infinite;
+  
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  perspective: 1000px; /* Enables 3D for children */
+}
+
+/* Background Animation */
+@keyframes liquidBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Attractive Glass Navbar with 3D Float */
+.main-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.4); /* Thinner glass */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  
+  /* UNIQUE: 3D Floating Shadow */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transform: translateZ(10px); 
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Subtle 3D Tilt on the whole container */
+  transform-style: preserve-3d;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--text-dark);
+  /* 3D Text Pop */
+  text-shadow: 0 5px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.brand:hover {
+  transform: scale(1.05) translateZ(20px);
+}
+
+.brand span { 
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* UNIQUE: Shimmer effect on the logo span */
+  background-size: 200% auto;
+  animation: goldShimmer 4s linear infinite;
+}
+
+@keyframes goldShimmer {
+  to { background-position: 200% center; }
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+  position: relative;
+}
+
+/* UNIQUE: 3D Hover Underline */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: var(--gold-gradient);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover { 
+  color: var(--heritage-gold); 
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Logout Button with 3D Depth */
+.logout-pill {
+  background: var(--gold-gradient);
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 800;
+  cursor: pointer;
+  
+  /* 3D Deep Shadow */
+  box-shadow: 0 4px 15px rgba(179, 135, 40, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.logout-pill:hover {
+  transform: translateY(-4px) rotateX(10deg);
+  box-shadow: 0 12px 25px rgba(179, 135, 40, 0.4);
+}

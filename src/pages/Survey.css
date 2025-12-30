@@ -1,0 +1,199 @@
+.survey-outer {
+  min-height: 100vh;
+  /* Your original background color */
+  background: radial-gradient(circle at 50% 50%, #b1ddcc 0%, #0d140f 100%);
+  background-color: #121a14; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  
+  /* NEW: Enables 3D depth for the Urdu effect */
+  position: relative;
+  overflow: hidden;
+  perspective: 2000px;
+}
+
+/* --- URDU RANDOM RISING EFFECT --- */
+
+/* Layer 1: White Urdu Language Names */
+.survey-outer::before {
+  content: 'سندھی  پشتو  بلوچی  پنجابی  سرائیکی  براہوئی  شینا  ہندکو  اردو  بلتی  کشمیری  تاریخ  ورثہ';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 120%;
+  font-family: 'Urdu Typesetting', 'Noto Nastaliq Urdu', serif;
+  font-weight: 900;
+  font-size: 5rem; 
+  line-height: 2.5;
+  color: rgba(255, 255, 255, 0.18); /* High visibility */
+  
+  /* Scattering for Randomness */
+  word-spacing: 180px;
+  letter-spacing: 8px;
+  white-space: pre-wrap;
+  z-index: 0;
+  pointer-events: none;
+  
+  /* 3D Animation */
+  animation: languageRiseUrduSurvey 28s infinite linear;
+  transform-style: preserve-3d;
+  filter: blur(1px);
+}
+
+/* Layer 2: Gold Urdu Heritage Keywords */
+.survey-outer::after {
+  content: 'ثقافت  نسل  پاکستان  قدیم  تحقیق  زبان  علم  ادب';
+  position: absolute;
+  bottom: -40%;
+  right: -5%;
+  width: 110%;
+  font-family: serif;
+  font-weight: 800;
+  font-size: 3.5rem;
+  color: rgba(212, 175, 55, 0.15); /* Gold visibility */
+  word-spacing: 250px;
+  white-space: pre-wrap;
+  z-index: 0;
+  pointer-events: none;
+  animation: languageRiseUrduSurvey 38s infinite linear reverse;
+  animation-delay: -8s;
+}
+
+@keyframes languageRiseUrduSurvey {
+  0% { 
+    transform: translateY(0) translateZ(-600px) rotateX(20deg) rotateY(-15deg); 
+    opacity: 0;
+  }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { 
+    transform: translateY(-160vh) translateZ(300px) rotateX(-20deg) rotateY(15deg); 
+    opacity: 0;
+  }
+}
+
+/* --- SURVEY CONTAINER (UNCHANGED) --- */
+
+.survey-container {
+  display: flex;
+  width: 1000px;
+  height: 600px;
+  background: white;
+  border-radius: 40px;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.08);
+  overflow: hidden;
+  
+  /* Keeps the container in front of the floating text */
+  position: relative;
+  z-index: 10;
+}
+
+/* Sidebar Styling */
+.survey-sidebar {
+  width: 300px;
+  background: #064E3B;
+  padding: 50px 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #C5A059;
+  margin-bottom: 60px;
+}
+
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  opacity: 0.4;
+  transition: 0.3s;
+}
+
+.step-item.active { opacity: 1; transform: translateX(10px); }
+.step-item.done { opacity: 0.8; color: #C5A059; }
+
+.step-number {
+  width: 30px; height: 30px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 900;
+}
+
+/* Main Card Styling */
+.survey-card-premium {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.gold-text { color: #064E3B; font-size: 2.2rem; font-weight: 900; }
+
+.input-box label {
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 700; color: #444; margin-bottom: 12px;
+}
+
+.input-box input {
+  width: 100%; padding: 18px; border-radius: 15px;
+  border: 2px solid #eee; outline: none; transition: 0.3s;
+}
+
+.input-box input:focus { border-color: #C5A059; background: #fffdf5; }
+
+/* Grid Option Tiles */
+.grid-options {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+
+.option-tile {
+  padding: 15px; border: 2px solid #eee; border-radius: 12px;
+  background: none; cursor: pointer; font-weight: 600; transition: 0.3s;
+}
+
+.option-tile.selected {
+  background: #064E3B; color: white; border-color: #064E3B;
+}
+
+/* Vitality Selector */
+.vitality-selector { display: flex; gap: 10px; }
+.v-tile { flex: 1; cursor: pointer; }
+.v-tile input { display: none; }
+.v-tile span {
+  display: block; padding: 15px; text-align: center;
+  border: 2px solid #eee; border-radius: 12px; font-weight: 700;
+}
+.v-tile input:checked + span { background: #C5A059; color: white; border-color: #C5A059; }
+
+/* Buttons */
+.next-btn, .final-btn {
+  background: #064E3B; color: white; border: none;
+  padding: 18px 35px; border-radius: 15px; font-weight: 800;
+  cursor: pointer; display: flex; align-items: center; gap: 10px;
+  margin-top: 30px;
+}
+
+.back-btn {
+  background: none; border: none; color: #888;
+  font-weight: 700; cursor: pointer; margin-top: 30px;
+}
+
+.btn-group { display: flex; align-items: center; gap: 20px; }

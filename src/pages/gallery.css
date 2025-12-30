@@ -1,0 +1,188 @@
+.gallery-page {
+  padding: 100px 0;
+  text-align: center;
+  perspective: 1500px;
+  /* Your background color remains the same */
+  background: radial-gradient(circle at 50% 50%, #b1ddcc 0%, #0d140f 100%);
+  background-color: #121a14; 
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- URDU RANDOM RISING EFFECT --- */
+.gallery-page::before {
+  /* Urdu Language Names: سندھی، پشتو، بلوچی، پنجابی، سرائیکی، براہوئی، شینا، ہندکو */
+  content: 'سندھی  پشتو  بلوچی  پنجابی  سرائیکی  براہوئی  شینا  ہندکو  اردو  بلتی  کشمیری  تاریخ  ورثہ';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 120%;
+  font-family: 'Urdu Typesetting', 'Noto Nastaliq Urdu', serif;
+  font-weight: 900;
+  font-size: 5rem; 
+  line-height: 2.5;
+  color: rgba(255, 255, 255, 0.18); /* Increased visibility as requested */
+  
+  /* RANDOMNESS: Wide word spacing and scattering */
+  word-spacing: 180px;
+  letter-spacing: 8px;
+  white-space: pre-wrap;
+  z-index: 0;
+  pointer-events: none;
+  
+  /* 3D Animation with random rotation */
+  animation: languageRiseUrdu 28s infinite linear;
+  transform-style: preserve-3d;
+  filter: blur(1px);
+}
+
+/* Second Gold Layer for extra depth and "Random" placement */
+.gallery-page::after {
+  content: 'ثقافت  نسل  پاکستان  قدیم  تحقیق';
+  position: absolute;
+  bottom: -40%;
+  right: -5%;
+  width: 110%;
+  font-family: serif;
+  font-weight: 800;
+  font-size: 3.5rem;
+  color: rgba(212, 175, 55, 0.15); /* Gold visibility */
+  word-spacing: 250px;
+  white-space: pre-wrap;
+  z-index: 0;
+  pointer-events: none;
+  animation: languageRiseUrdu 38s infinite linear reverse;
+  animation-delay: -8s;
+}
+
+@keyframes languageRiseUrdu {
+  0% { 
+    /* Starts tilted and deep back */
+    transform: translateY(0) translateZ(-600px) rotateX(20deg) rotateY(-15deg); 
+    opacity: 0;
+  }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { 
+    /* Ends tilted the other way and flies past the camera */
+    transform: translateY(-160vh) translateZ(300px) rotateX(-20deg) rotateY(15deg); 
+    opacity: 0;
+  }
+}
+
+/* --- GALLERY FUNCTIONALITY (UNCHANGED) --- */
+
+.museum-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 45px;
+  height: 650px;
+  transform-style: preserve-3d;
+  z-index: 2; /* Keeps slider above the rising text */
+  position: relative;
+}
+
+.image-frame {
+  width: 850px;
+  height: 100%;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  padding: 12px;
+  border-radius: 40px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: rotateY(-10deg) rotateX(4deg);
+}
+
+.image-frame:hover {
+  transform: rotateY(0deg) rotateX(0deg) scale(1.03) translateZ(80px);
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+}
+
+.image-frame::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 30%;
+  height: 300%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(212, 175, 55, 0.4),
+    transparent
+  );
+  transform: rotate(25deg);
+  animation: scan 4.5s infinite ease-in-out;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% { left: -120%; }
+  100% { left: 180%; }
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  position: relative;
+}
+
+.img-overlay {
+  background: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.9) 0%, 
+    rgba(6, 78, 59, 0.3) 70%, 
+    transparent 100%
+  );
+  width: 100%;
+  padding: 50px;
+  color: white;
+  text-align: left;
+  transform: translateZ(100px); 
+  transform-style: preserve-3d;
+}
+
+.img-overlay h3 {
+  font-size: 3.2rem;
+  font-weight: 900;
+  border-left: 8px solid #d4af37;
+  padding-left: 20px;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.nav-btn {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  color: #fcfdfc;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  z-index: 100;
+}
+
+.nav-btn:hover {
+  background: #d4af37;
+  color: #121a14;
+  transform: scale(1.1) translateZ(40px);
+}
+
+.dot.active {
+  background: linear-gradient(to right, #4caf50, #d4af37);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
