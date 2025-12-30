@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/zaban-heritage/static/css/main.1aa31f61.css",
+    "main.js": "/zaban-heritage/static/js/main.c4bc2b38.js",
+    "static/js/453.5df94e90.chunk.js": "/zaban-heritage/static/js/453.5df94e90.chunk.js",
+    "index.html": "/zaban-heritage/index.html",
+    "main.1aa31f61.css.map": "/zaban-heritage/static/css/main.1aa31f61.css.map",
+    "main.c4bc2b38.js.map": "/zaban-heritage/static/js/main.c4bc2b38.js.map",
+    "453.5df94e90.chunk.js.map": "/zaban-heritage/static/js/453.5df94e90.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1aa31f61.css",
+    "static/js/main.c4bc2b38.js"
+  ]
+}
